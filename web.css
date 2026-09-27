@@ -898,3 +898,27 @@ footer > p {
     font-size: 24px;
     text-decoration: none;
 }
+
+
+
+
+
+
+
+/* =========================================
+   ESTILO DEFINITIVO PARA TALLA AGOTADA
+========================================= */
+
+/* Forzamos que se aplique usando !important para que tu otro código no lo rompa */
+.sizes button.sold-out, 
+.sizes button.sold-out:hover, 
+.sizes button.sizes button:hover.sold-out {
+    position: relative !important;
+    opacity: 0.30 !important;   /* Lo vuelve muy transparente */
+    cursor: not-allowed !important; /* Icono de prohibido */
+    color: #777 !important;
+    border-color: #333 !important;
+    
+    /* Esto dibuja una línea diagonal perfecta de esquina a esquina directamente en el fondo */
+    background: linear-gradient(to top right, transparent calc(50% - 1px), #888, transparent calc(50% + 1px)) !important;
+}

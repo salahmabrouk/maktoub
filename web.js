@@ -19,7 +19,7 @@ const PRODUCT_PRICE = 25.99;
 
 let selectedColor = "Negro";
 
-let selectedImage = "media/producto2.PNG";
+let selectedImage = "media/camisetas.PNG";
 
 let selectedSize = "M";
 
