@@ -216,31 +216,4 @@ function pedidoEmail() {
 
 
 
-/* =========================
-   MÚSICA
-========================= */
-
-const music = document.getElementById("music");
-
-function toggleMusic() {
-
-    const button =
-        document.getElementById("musicButton");
-
-
-    if (music.paused) {
-
-        music.play();
-
-        button.textContent = "🔊 MÚSICA";
-
-    } else {
-
-        music.pause();
-
-        button.textContent = "🔇 MÚSICA";
-
-    }
-}
-
 actualizarCarrito();
