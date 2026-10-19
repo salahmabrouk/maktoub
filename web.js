@@ -1,374 +1,219 @@
-/* =========================
-   CONFIGURACIÓN
-========================= */
 
-// CAMBIA ESTOS DATOS POR LOS TUYOS
-
+// PRODUCTOS
 const WHATSAPP = "34643530983";
-
 const EMAIL = "maktoubone1@gmail.com";
 
-const PRODUCT_NAME = "Tu producto";
-
-const PRODUCT_PRICE = 25.99;
-
-
-/* =========================
-   VARIABLES
-========================= */
-
 let selectedColor = "Negro";
-
-let selectedImage = "media/camisetas.PNG";
-
+let selectedImage = "media/cnegra.jpeg";
 let selectedSize = "M";
-
 let quantity = 1;
+
+let selectedColorSudadera = "Negro";
+let selectedImageSudadera = "media/sudadera.PNG";
+let selectedSizeSudadera = "M";
+let quantitySudadera = 1;
 
 let cart = [];
 
-
-/* =========================
-   COLOR
-========================= */
-
+// CAMISETA: COLOR Y TALLA
 function seleccionarColor(color, image, button) {
-
     selectedColor = color;
-
     selectedImage = image;
 
     document.getElementById("productImage").src = image;
-
     document.getElementById("selectedColor").textContent = color;
 
-    document.querySelectorAll(".color").forEach(btn => {
-
-        btn.classList.remove("active");
-
-    });
+    button.parentElement.querySelectorAll(".color")
+        .forEach(btn => btn.classList.remove("active"));
 
     button.classList.add("active");
 }
-
-
-/* =========================
-   TALLA
-========================= */
 
 function seleccionarTalla(size, button) {
-
     selectedSize = size;
 
-    document.querySelectorAll(".sizes button").forEach(btn => {
-
-        btn.classList.remove("active");
-
-    });
+    button.parentElement.querySelectorAll("button")
+        .forEach(btn => btn.classList.remove("active"));
 
     button.classList.add("active");
 }
 
+// SUDADERA: COLOR Y TALLA
+function seleccionarColorSudadera(color, image, button) {
+    selectedColorSudadera = color;
+    selectedImageSudadera = image;
 
-/* =========================
-   CANTIDAD
-========================= */
+    document.getElementById("sudaderaImage").src = image;
+    document.getElementById("selectedColorSudadera").textContent = color;
 
+    button.parentElement.querySelectorAll(".color")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+}
+
+function seleccionarTallaSudadera(size, button) {
+    selectedSizeSudadera = size;
+
+    button.parentElement.querySelectorAll("button")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+}
+
+// CANTIDADES INDEPENDIENTES
 function cambiarCantidad(number) {
-
-    quantity += number;
-
-    if (quantity < 1) {
-
-        quantity = 1;
-
-    }
-
-    if (quantity > 20) {
-
-        quantity = 20;
-
-    }
-
+    quantity = Math.max(1, Math.min(20, quantity + number));
     document.getElementById("quantity").textContent = quantity;
 }
 
+function cambiarCantidadSudadera(number) {
+    quantitySudadera = Math.max(1, Math.min(20, quantitySudadera + number));
+    document.getElementById("quantitySudadera").textContent = quantitySudadera;
+}
 
-/* =========================
-   AÑADIR AL CARRITO
-========================= */
+// AÑADIR CUALQUIERA DE LOS DOS PRODUCTOS
+function agregarAlCarrito(tipo) {
+    let product;
 
-function agregarAlCarrito() {
-
-    const product = {
-
-        name: PRODUCT_NAME,
-
-        price: PRODUCT_PRICE,
-
-        color: selectedColor,
-
-        size: selectedSize,
-
-        image: selectedImage,
-
-        quantity: quantity
-
-    };
+    if (tipo === "sudadera") {
+        product = {
+            name: "Sudadera Maktoub",
+            price: 29.99,
+            color: selectedColorSudadera,
+            size: selectedSizeSudadera,
+            image: selectedImageSudadera,
+            quantity: quantitySudadera
+        };
+    } else {
+        product = {
+            name: "Camiseta Maktoub",
+            price: 25.99,
+            color: selectedColor,
+            size: selectedSize,
+            image: selectedImage,
+            quantity: quantity
+        };
+    }
 
     cart.push(product);
-
     actualizarCarrito();
-
     abrirCarrito();
-
 }
 
-
-/* =========================
-   ACTUALIZAR CARRITO
-========================= */
-
+// CARRITO
 function actualizarCarrito() {
-
     const cartItems = document.getElementById("cartItems");
-
     const cartCount = document.getElementById("cart-count");
-
     const cartTotal = document.getElementById("cartTotal");
 
-
     if (cart.length === 0) {
-
-        cartItems.innerHTML = `
-            <p class="empty-cart">
-                Tu carrito está vacío.
-            </p>
-        `;
-
+        cartItems.innerHTML = '<p class="empty-cart">Tu carrito está vacío.</p>';
         cartCount.textContent = "0";
-
         cartTotal.textContent = "0,00 €";
-
         return;
     }
 
-
-    let html = "";
-
     let total = 0;
-
     let count = 0;
 
-
-    cart.forEach((item, index) => {
-
+    cartItems.innerHTML = cart.map((item, index) => {
         const itemTotal = item.price * item.quantity;
-
         total += itemTotal;
-
         count += item.quantity;
 
-
-        html += `
-
+        return `
             <div class="cart-item">
-
-                <img
-                    src="${item.image}"
-                    alt="${item.name}"
-                >
-
+                <img src="${item.image}" alt="${item.name}">
                 <div class="cart-item-info">
-
-                    <h4>
-                        ${item.name}
-                    </h4>
-
-                    <p>
-                        Color: ${item.color}
-                    </p>
-
-                    <p>
-                        Talla: ${item.size}
-                    </p>
-
-                    <p>
-                        Cantidad: ${item.quantity}
-                    </p>
-
-                    <p>
-                        ${itemTotal.toFixed(2).replace(".", ",")} €
-                    </p>
-
+                    <h4>${item.name}</h4>
+                    <p>Color: ${item.color}</p>
+                    <p>Talla: ${item.size}</p>
+                    <p>Cantidad: ${item.quantity}</p>
+                    <p>${itemTotal.toFixed(2).replace(".", ",")} €</p>
                 </div>
-
-                <button
-                    class="remove"
-                    onclick="eliminarProducto(${index})">
-
-                    ✕
-
-                </button>
-
+                <button class="remove" onclick="eliminarProducto(${index})">✕</button>
             </div>
         `;
-    });
-
-
-    cartItems.innerHTML = html;
+    }).join("");
 
     cartCount.textContent = count;
-
-    cartTotal.textContent =
-        total.toFixed(2).replace(".", ",") + " €";
+    cartTotal.textContent = total.toFixed(2).replace(".", ",") + " €";
 }
 
-
-/* =========================
-   ELIMINAR PRODUCTO
-========================= */
-
 function eliminarProducto(index) {
-
     cart.splice(index, 1);
-
     actualizarCarrito();
 }
 
-
-/* =========================
-   ABRIR CARRITO
-========================= */
-
 function abrirCarrito() {
-
     document.getElementById("cart").classList.add("open");
-
-    document
-        .getElementById("cartOverlay")
-        .classList.add("show");
+    document.getElementById("cartOverlay").classList.add("show");
 }
-
-
-/* =========================
-   CERRAR CARRITO
-========================= */
 
 function cerrarCarrito() {
-
     document.getElementById("cart").classList.remove("open");
-
-    document
-        .getElementById("cartOverlay")
-        .classList.remove("show");
+    document.getElementById("cartOverlay").classList.remove("show");
 }
 
-
-/* =========================
-   PEDIDO WHATSAPP
-========================= */
-
+// PEDIDO POR WHATSAPP
 function pedidoWhatsApp() {
-
-    if (cart.length === 0) {
-
+    if (!cart.length) {
         alert("Tu carrito está vacío.");
-
         return;
     }
 
-
-    let message = "🔥 PEDIDO MAKTOUB 🔥%0A%0A";
-
     let total = 0;
-
+    let message = "🔥 PEDIDO MAKTOUB 🔥\n\n";
 
     cart.forEach((item, index) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
 
-        const itemTotal = item.price * item.quantity;
-
-        total += itemTotal;
-
-
-        message +=
-            `${index + 1}. ${item.name}%0A` +
-            `Color: ${item.color}%0A` +
-            `Talla: ${item.size}%0A` +
-            `Cantidad: ${item.quantity}%0A` +
-            `Precio: ${itemTotal.toFixed(2)} €%0A%0A`;
-
+        message += `${index + 1}. ${item.name}\n`;
+        message += `Color: ${item.color}\n`;
+        message += `Talla: ${item.size}\n`;
+        message += `Cantidad: ${item.quantity}\n`;
+        message += `Precio: ${subtotal.toFixed(2)} €\n\n`;
     });
 
+    message += `TOTAL: ${total.toFixed(2)} €\n\n`;
+    message += "Hola MAKTOUB, quiero realizar este pedido.";
 
-    message +=
-        `TOTAL: ${total.toFixed(2)} €%0A%0A` +
-        `Hola MAKTOUB, quiero realizar este pedido.`;
-
-
-    const url =
-        `https://wa.me/${WHATSAPP}?text=${message}`;
-
-
-    window.open(url, "_blank");
+    window.open(
+        `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`,
+        "_blank"
+    );
 }
 
-
-/* =========================
-   PEDIDO EMAIL
-========================= */
-
+// PEDIDO POR EMAIL
 function pedidoEmail() {
-
-    if (cart.length === 0) {
-
+    if (!cart.length) {
         alert("Tu carrito está vacío.");
-
         return;
     }
 
-
-    let subject = "Pedido MAKTOUB";
-
-    let body = "Hola MAKTOUB,%0A%0A";
-
-    body += "Quiero realizar el siguiente pedido:%0A%0A";
-
-
     let total = 0;
-
+    let body = "Hola MAKTOUB,\n\nQuiero realizar el siguiente pedido:\n\n";
 
     cart.forEach((item, index) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
 
-        const itemTotal = item.price * item.quantity;
-
-        total += itemTotal;
-
-
-        body +=
-            `${index + 1}. ${item.name}%0A` +
-            `Color: ${item.color}%0A` +
-            `Talla: ${item.size}%0A` +
-            `Cantidad: ${item.quantity}%0A` +
-            `Precio: ${itemTotal.toFixed(2)} €%0A%0A`;
-
+        body += `${index + 1}. ${item.name}\n`;
+        body += `Color: ${item.color}\n`;
+        body += `Talla: ${item.size}\n`;
+        body += `Cantidad: ${item.quantity}\n`;
+        body += `Precio: ${subtotal.toFixed(2)} €\n\n`;
     });
 
+    body += `TOTAL: ${total.toFixed(2)} €\n\n`;
+    body += "Nombre:\nTeléfono:\nDirección:\n\nGracias.";
 
-    body +=
-        `TOTAL: ${total.toFixed(2)} €%0A%0A` +
-        `Nombre:%0A` +
-        `Teléfono:%0A` +
-        `Dirección:%0A%0A` +
-        `Gracias.`;
-
-
-    const url =
-        `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-
-
-    window.location.href = url;
+    window.location.href =
+        `mailto:${EMAIL}?subject=${encodeURIComponent("Pedido MAKTOUB")}&body=${encodeURIComponent(body)}`;
 }
+
 
 
 /* =========================
@@ -397,10 +242,5 @@ function toggleMusic() {
 
     }
 }
-
-
-/* =========================
-   INICIO
-========================= */
 
 actualizarCarrito();

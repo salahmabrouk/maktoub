@@ -46,7 +46,7 @@
                 muted
                 loop
                 playsinline>
-                <source src="media/camisetas.mov" type="video/mp4">
+                <source src="media/video.MOV" type="video/mp4">
             </video>
 
             <div class="hero-overlay"></div>
@@ -67,11 +67,15 @@
 
             </div>
 
+
+
             <div class="music-control">
                 <button onclick="toggleMusic()" id="musicButton">
                     🔇 MÚSICA
                 </button>
             </div>
+
+
 
         </section>
 
@@ -80,146 +84,124 @@
 
         <section id="coleccion" class="collection">
 
-            <div class="section-title">
+    <div class="section-title">
+        <p>PRENDAS CON HISTORIA</p>
+        <h2>COLECCIÓN</h2>
+    </div>
 
-                <p>PRENDAS CON HISTORIA</p>
+    <div class="products-grid">
 
-                <h2>COLECCIÓN</h2>
+        <!-- CAMISETA -->
+        <div class="product">
 
+            <div class="product-image-container">
+                <span class="new-tag">CAMISETA</span>
+                <img
+                    id="productImage"
+                    src="media/camisetas.PNG"
+                    alt="Camiseta MAKTOUB">
             </div>
 
+            <div class="product-info">
+                <p class="product-category">MAKTOUB COLLECTION</p>
+                <h3>Camiseta Maktoub</h3>
+                <p class="price">19,99 €</p>
 
-            <div class="product">
+                <div class="option">
+                    <p>COLOR</p>
+                    <div class="colors">
+                        <button class="color active"
+                            onclick="seleccionarColor('Negro', 'media/cnegra.jpeg', this)"
+                            aria-label="Negro"></button>
 
-                <!-- IMAGEN -->
-
-                <div class="product-image-container">
-
-                    <span class="new-tag">
-                        NUEVO
-                    </span>
-
-                    <img
-                        id="productImage"
-                        src="media/camisetas.PNG"
-                        alt="Producto MAKTOUB">
-
+                        <button class="color white"
+                            onclick="seleccionarColor('Blanco', 'media/cblanca.jpeg', this)"
+                            aria-label="Blanco"></button>
+                    </div>
+                    <span id="selectedColor">Negro</span>
                 </div>
 
-
-                <!-- INFORMACIÓN -->
-
-                <div class="product-info">
-
-                    <p class="product-category">
-                        MAKTOUB COLLECTION
-                    </p>
-
-                    <h3>
-                        Camiseta Maktoub
-                    </h3>
-
-                    <p class="price">
-                        25,99 €
-                    </p>
-
-
-                    <!-- COLOR -->
-
-                    <div class="option">
-
-                        <p>COLOR</p>
-
-                        <div class="colors">
-
-                            <button
-                                class="color active"
-                                onclick="seleccionarColor('Negro', 'media/cnegra.jpeg', this)"
-                                aria-label="Negro">
-                            </button>
-
-                            <button
-                                class="color white"
-                                onclick="seleccionarColor('Blanco', 'media/cblanca.jpeg', this)"
-                                aria-label="Blanco">
-                            </button>
-
-                        </div>
-
-                        <span id="selectedColor">
-                            Negro
-                        </span>
-
+                <div class="option">
+                    <p>TALLA</p>
+                    <div class="sizes">
+                        <button onclick="seleccionarTalla('S', this)">S</button>
+                        <button class="active" onclick="seleccionarTalla('M', this)">M</button>
+                        <button onclick="seleccionarTalla('L', this)">L</button>
+                        <button onclick="seleccionarTalla('XL', this)">XL</button>
+                        <button onclick="seleccionarTalla('XXL', this)">XXL</button>
                     </div>
-
-
-                    <!-- TALLA -->
-
-                    <div class="option">
-
-                        <p>TALLA</p>
-
-                        <div class="sizes">
-
-                            <button onclick="seleccionarTalla('S', this)">
-                                S
-                            </button>
-
-                            <button onclick="seleccionarTalla('M', this)">
-                                M
-                            </button>
-
-                            <button onclick="seleccionarTalla('L', this)">
-                                L
-                            </button>
-
-                            <button onclick="seleccionarTalla('XL', this)">
-                                XL
-                            </button>
-                            
-                            <button onclick="seleccionarTalla('XXL', this)">
-                                XXL
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- CANTIDAD -->
-
-                    <div class="quantity">
-
-                        <button onclick="cambiarCantidad(-1)">
-                            −
-                        </button>
-
-                        <span id="quantity">
-                            1
-                        </span>
-
-                        <button onclick="cambiarCantidad(1)">
-                            +
-                        </button>
-
-                    </div>
-
-
-                    <!-- AÑADIR -->
-
-                    <button
-                        class="add-cart"
-                        onclick="agregarAlCarrito()">
-
-                        AÑADIR AL CARRITO
-
-                    </button>
-
                 </div>
 
+                <div class="quantity">
+                    <button onclick="cambiarCantidad(-1)">−</button>
+                    <span id="quantity">1</span>
+                    <button onclick="cambiarCantidad(1)">+</button>
+                </div>
+
+                <button class="add-cart"
+                    onclick="agregarAlCarrito('camiseta')">
+                    AÑADIR AL CARRITO
+                </button>
+            </div>
+        </div>
+
+        <!-- SUDADERA -->
+        <div class="product">
+
+            <div class="product-image-container">
+                <span class="new-tag">NUEVO</span>
+                <img
+                    id="sudaderaImage"
+                    src="media/sudaderas.JPG"
+                    alt="Sudadera MAKTOUB">
             </div>
 
-        </section>
+            <div class="product-info">
+                <p class="product-category">MAKTOUB COLLECTION</p>
+                <h3>Sudadera Maktoub</h3>
+                <p class="price">29,99 €</p>
+
+                <div class="option">
+                    <p>COLOR</p>
+                    <div class="colors">
+                        <button class="color active"
+                            onclick="seleccionarColorSudadera('Negro', 'media/snegra.JPG', this)"
+                            aria-label="Negro"></button>
+
+                        <button class="color gray"
+                            onclick="seleccionarColorSudadera('Gris', 'media/sgris.JPG', this)"
+                            aria-label="Gris"></button>
+                    </div>
+                    <span id="selectedColorSudadera">Negro</span>
+                </div>
+
+                <div class="option">
+                    <p>TALLA</p>
+                    <div class="sizes">
+                        <button onclick="seleccionarTallaSudadera('S', this)">S</button>
+                        <button class="active" onclick="seleccionarTallaSudadera('M', this)">M</button>
+                        <button onclick="seleccionarTallaSudadera('L', this)">L</button>
+                        <button onclick="seleccionarTallaSudadera('XL', this)">XL</button>
+                        <button onclick="seleccionarTallaSudadera('XXL', this)">XXL</button>
+                    </div>
+                </div>
+
+                <div class="quantity">
+                    <button onclick="cambiarCantidadSudadera(-1)">−</button>
+                    <span id="quantitySudadera">1</span>
+                    <button onclick="cambiarCantidadSudadera(1)">+</button>
+                </div>
+
+                <button class="add-cart"
+                    onclick="agregarAlCarrito('sudadera')">
+                    AÑADIR AL CARRITO
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
 
 
         <!-- ================= NOSOTROS ================= -->

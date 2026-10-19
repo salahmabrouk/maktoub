@@ -412,6 +412,11 @@ button {
     cursor: pointer;
 }
 
+.color.gray {
+    background-color: #999999;
+    border: 1px solid #000000;
+} 
+
 .color.white {
     background: white;
 }
@@ -897,4 +902,51 @@ footer > p {
     color: white;
     font-size: 24px;
     text-decoration: none;
+}
+
+
+/* =========================
+   GRID DE PRODUCTOS
+========================= */
+
+.products-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 45px;
+    align-items: start;
+}
+
+.products-grid .product {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: stretch;
+}
+
+.products-grid .product-info h3 {
+    font-size: 30px;
+}
+
+.products-grid .price {
+    margin-bottom: 30px;
+}
+
+.products-grid .sizes {
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+        max-width: 480px;
+    }
+
+    .products-grid .product-info h3 {
+        font-size: 28px;
+    }
 }
