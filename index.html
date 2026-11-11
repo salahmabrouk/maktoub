@@ -1,373 +1,156 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>MAKTOUB | مكتوب</title>
-    <link rel="icon" sizes="64x64" href="media/logomaktoub.PNG">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
-    <link rel="stylesheet" href="web.css">
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MAKTOUB — Tu estilo ya estaba escrito.">
+  <title>MAKTOUB | مكتوب</title>
+  <link rel="icon" sizes="64x64" href="media/logomaktoub.PNG">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="web.css">
 </head>
-
 <body>
+  <header class="header">
+    <a href="#inicio" class="logo">MAKTOUB <span>| مكتوب</span></a>
+    <nav class="nav">
+      <a href="#inicio">INICIO</a><a href="#coleccion">COLECCIÓN</a>
+      <a href="#nosotros">NOSOTROS</a><a href="#contacto">CONTACTO</a>
+    </nav>
+    <button class="cart-button" onclick="abrirCarrito()" aria-label="Abrir carrito">🛒 <span id="cart-count">0</span></button>
+  </header>
 
-    <!-- ================= HEADER ================= -->
+  <main>
+    <section id="inicio" class="hero">
+      <video
+                class="hero-video" autoplay muted loop playsinline>
+                <source src="media/video.MOV" type="video/mp4">
+                <source src="media/musica_web.mp3" type="music/mp3">
+      </video>
 
-    <header class="header">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-small">مكتوب</p>
+        <h1>MAKTOUB</h1>
+        <p class="hero-subtitle">TU ESTILO YA ESTABA ESCRITO</p>
+        <a href="#coleccion" class="button">VER COLECCIÓN</a>
+      </div>
+      <button class="music-toggle" id="musicToggle" type="button">♫ ACTIVAR MÚSICA</button>
+    </section>
 
-        <a href="#" class="logo">MAKTOUB | مكتوب</a>
+    <section id="coleccion" class="collection">
+      <div class="section-title">
+        <p>PRENDAS CON HISTORIA</p><h2>COLECCIÓN</h2>
+        <span>Selecciona una prenda para descubrir todos sus detalles.</span>
+      </div>
+      <div class="products-grid">
+        
+        
+        <button class="product-card" onclick="abrirProducto('camiseta')">
+          <div class="product-image-container">
+            <span class="new-tag">OFERTA</span>
+            <img src="media/camisetas.JPG" alt="Camisetas">
 
-        <nav class="nav">
-            <a href="#inicio">INICIO</a>
-            <a href="#coleccion">COLECCIÓN</a>
-            <a href="#nosotros">NOSOTROS</a>
-            <a href="#contacto">CONTACTO</a>
-        </nav>
-
-        <button class="cart-button" onclick="abrirCarrito()">
-            🛒
-            <span id="cart-count">0</span>
+            <span class="quick-view">VER PRODUCTO <i class="fas fa-arrow-right"></i></span>
+          </div>
+          <div class="product-info"><p class="product-category">MAKTOUB COLLECTION</p><h3>Camiseta MAKTOUB</h3>
+            <p class="price"><del>20 €</del> 15 €</p><p class="product-hint">Negro / Blanco · Ver detalles</p></div>
         </button>
 
-    </header>
+
+        <button class="product-card" onclick="abrirProducto('sudadera')">
+          <div class="product-image-container">
+            <span class="new-tag">OFERTA</span>
+            <img src="media/sudaderas.JPG" alt="Sudaderas">
+            <span class="quick-view">VER PRODUCTO <i class="fas fa-arrow-right"></i></span>
+          </div>
+          <div class="product-info"><p class="product-category">MAKTOUB COLLECTION</p><h3>Sudadera MAKTOUB</h3>
+            <p class="price"><del>30 €</del> 27 €</p><p class="product-hint">Negro / Gris · Ver detalles</p></div>
+        </button>
 
 
-    <!-- ================= HERO ================= -->
-
-    <main>
-
-        <section id="inicio" class="hero">
-
-            <video
-                class="hero-video"
-                autoplay
-                muted
-                loop
-                playsinline>
-                <source src="media/video.MOV" type="video/mp4">
-            </video>
-
-            <div class="hero-overlay"></div>
-
-            <div class="hero-content">
-
-                <p class="hero-small">مكتوب</p>
-
-                <h1>MAKTOUB</h1>
-
-                <p class="hero-subtitle">
-                    TU ESTILO YA ESTABA ESCRITO
-                </p>
-
-                <a href="#coleccion" class="button">
-                    VER COLECCIÓN
-                </a>
-
-            </div>
-
-        </section>
+        <button class="product-card" onclick="abrirProducto('chandal')">
+          <div class="product-image-container">
+            <span class="new-tag">OFERTA</span>
+            <img src="media/chandal.JPG" alt="chandal">
+            <span class="quick-view">VER PRODUCTO <i class="fas fa-arrow-right"></i></span>
+          </div>
+          <div class="product-info"><p class="product-category">MAKTOUB COLLECTION</p><h3>Chándal MAKTOUB</h3>
+            <p class="price"><del>45 €</del>40 €</p><p class="product-hint">Negro / Gris · Ver detalles</p></div>
+        </button>
 
 
-        <!-- ================= COLECCIÓN ================= -->
+      </div>
+    </section>
 
-        <section id="coleccion" class="collection">
+    <section id="nosotros" class="about">
+      <div class="about-inner">
+        <p class="section-small">NUESTRA HISTORIA</p><h2>MAKTOUB</h2>
+        <p>MAKTOUB nace de una idea sencilla: <b>cada persona tiene un camino que recorrer y una historia que escribir.</b></p>
+        <p>Creamos esta marca para convertir esa filosofía en algo que puedas llevar contigo. Prendas pensadas para quienes tienen su propia identidad, siguen su camino y no necesitan encajar en lo establecido.</p>
+        <p><b>No creemos en las casualidades. Creemos en el camino. Y si estás aquí, quizá también estaba escrito.</b></p>
+        <p><b>MAKTOUB | مكتوب — Lo que está escrito.</b></p>
+      </div>
+    </section>
 
-    <div class="section-title">
-        <p>PRENDAS CON HISTORIA</p>
-        <h2>COLECCIÓN</h2>
+    <section id="contacto" class="contact">
+      <p class="section-small">CONTACTO</p><h2>HABLEMOS</h2>
+      <p>¿Tienes alguna pregunta sobre nuestros productos?</p>
+      <a href="mailto:maktoubone1@gmail.com" class="email-button">ENVIAR EMAIL</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">MAKTOUB | مكتوب</div>
+    <p>MÁS QUE ROPA, ES UNA ACTITUD.</p>
+    <div class="social-network">
+      <a href="https://www.instagram.com/maktoubone" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@maktoubone" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="mailto:maktoubone1@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
     </div>
+    <a class="privacy-link" href="privacidad.html">POLÍTICA DE PRIVACIDAD</a>
+    <p class="copyright">© 2026 MAKTOUB. TODOS LOS DERECHOS RESERVADOS.</p>
+  </footer>
 
-    <div class="products-grid">
-
-        <!-- CAMISETA -->
-        <div class="product">
-
-            <div class="product-image-container">
-                <span class="new-tag">CAMISETA</span>
-                <img
-                    id="productImage"
-                    src="media/camisetas.PNG"
-                    alt="Camiseta MAKTOUB">
-            </div>
-
-            <div class="product-info">
-                <p class="product-category">MAKTOUB COLLECTION</p>
-                <h3>Camiseta Maktoub</h3>
-                <p class="price">19,99 €</p>
-
-                <div class="option">
-                    <p>COLOR</p>
-                    <div class="colors">
-                        <button class="color active"
-                            onclick="seleccionarColor('Negro', 'media/cnegra.jpeg', this)"
-                            aria-label="Negro"></button>
-
-                        <button class="color white"
-                            onclick="seleccionarColor('Blanco', 'media/cblanca.jpeg', this)"
-                            aria-label="Blanco"></button>
-                    </div>
-                    <span id="selectedColor">Negro</span>
-                </div>
-
-                <div class="option">
-                    <p>TALLA</p>
-                    <div class="sizes">
-                        <button onclick="seleccionarTalla('S', this)">S</button>
-                        <button class="active" onclick="seleccionarTalla('M', this)">M</button>
-                        <button onclick="seleccionarTalla('L', this)">L</button>
-                        <button onclick="seleccionarTalla('XL', this)">XL</button>
-                        <button onclick="seleccionarTalla('XXL', this)">XXL</button>
-                    </div>
-                </div>
-
-                <div class="quantity">
-                    <button onclick="cambiarCantidad(-1)">−</button>
-                    <span id="quantity">1</span>
-                    <button onclick="cambiarCantidad(1)">+</button>
-                </div>
-
-                <button class="add-cart"
-                    onclick="agregarAlCarrito('camiseta')">
-                    AÑADIR AL CARRITO
-                </button>
-            </div>
+  <!-- Ficha de producto: se abre al tocar una tarjeta -->
+  <div class="modal-backdrop" id="productModal" onclick="cerrarProductoDesdeFondo(event)" aria-hidden="true">
+    <section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" onclick="cerrarProducto()" aria-label="Cerrar">✕</button>
+      <div class="modal-gallery">
+        <div class="main-photo-wrap"><img id="modalMainImage" src="" alt="Fotografía del producto"></div>
+        <div class="thumbnail-row" id="modalThumbnails"></div>
+      </div>
+      <div class="modal-details">
+        <p class="product-category">MAKTOUB COLLECTION</p>
+        <h2 id="modalTitle">Producto MAKTOUB</h2>
+        <p class="modal-price" id="modalPrice"></p>
+        <p class="modal-description" id="modalDescription"></p>
+        <div class="modal-option"><label>COLOR</label><div id="modalColors" class="choice-row"></div></div>
+        <div class="modal-option"><label>TALLA</label><div id="modalSizes" class="choice-row"></div></div>
+        <div class="modal-option"><label>CANTIDAD</label>
+          <div class="quantity-control"><button onclick="cambiarCantidad(-1)">−</button><span id="modalQuantity">1</span><button onclick="cambiarCantidad(1)">+</button></div>
         </div>
+        <button class="add-cart" onclick="agregarAlCarrito()">AÑADIR A LA CESTA</button>
+        <p class="modal-note"><i class="fas fa-lock"></i> Pedido confirmado directamente contigo por WhatsApp o email.</p>
+      </div>
+    </section>
+  </div>
 
-        <!-- SUDADERA -->
-        <div class="product">
-
-            <div class="product-image-container">
-                <span class="new-tag">NUEVO</span>
-                <img
-                    id="sudaderaImage"
-                    src="media/sudaderas.JPG"
-                    alt="Sudadera MAKTOUB">
-            </div>
-
-            <div class="product-info">
-                <p class="product-category">MAKTOUB COLLECTION</p>
-                <h3>Sudadera Maktoub</h3>
-                <p class="price">29,99 €</p>
-
-                <div class="option">
-                    <p>COLOR</p>
-                    <div class="colors">
-                        <button class="color active"
-                            onclick="seleccionarColorSudadera('Negro', 'media/snegra.JPG', this)"
-                            aria-label="Negro"></button>
-
-                        <button class="color gray"
-                            onclick="seleccionarColorSudadera('Gris', 'media/sgris.JPG', this)"
-                            aria-label="Gris"></button>
-                    </div>
-                    <span id="selectedColorSudadera">Negro</span>
-                </div>
-
-                <div class="option">
-                    <p>TALLA</p>
-                    <div class="sizes">
-                        <button onclick="seleccionarTallaSudadera('S', this)">S</button>
-                        <button class="active" onclick="seleccionarTallaSudadera('M', this)">M</button>
-                        <button onclick="seleccionarTallaSudadera('L', this)">L</button>
-                        <button onclick="seleccionarTallaSudadera('XL', this)">XL</button>
-                        <button onclick="seleccionarTallaSudadera('XXL', this)">XXL</button>
-                    </div>
-                </div>
-
-                <div class="quantity">
-                    <button onclick="cambiarCantidadSudadera(-1)">−</button>
-                    <span id="quantitySudadera">1</span>
-                    <button onclick="cambiarCantidadSudadera(1)">+</button>
-                </div>
-
-                <button class="add-cart"
-                    onclick="agregarAlCarrito('sudadera')">
-                    AÑADIR AL CARRITO
-                </button>
-            </div>
-        </div>
-
+  <!-- Carrito lateral -->
+  <div id="cartOverlay" class="cart-overlay" onclick="cerrarCarrito()"></div>
+  <aside id="cart" class="cart" aria-label="Tu cesta">
+    <div class="cart-header"><div><p class="product-category">MAKTOUB</p><h2>TU CESTA</h2></div><button onclick="cerrarCarrito()" aria-label="Cerrar cesta">✕</button></div>
+    <div id="cartItems"><p class="empty-cart">Tu cesta está vacía.</p></div>
+    <div class="cart-bottom">
+      <div class="total"><span>TOTAL</span><strong id="cartTotal">0 $</strong></div>
+      <label for="customerName">NOMBRE</label><input id="customerName" placeholder="Tu nombre">
+      <label for="customerNotes">NOTAS (OPCIONAL)</label><textarea id="customerNotes" rows="2" placeholder="Dirección u otra información"></textarea>
+      <button class="whatsapp-button" onclick="pedidoWhatsApp()">💬 PEDIR POR WHATSAPP</button>
+      <button class="email-order-button" onclick="pedidoEmail()">✉ PEDIR POR EMAIL</button>
     </div>
+  </aside>
 
-</section>
-
-
-        <!-- ================= NOSOTROS ================= -->
-
-        <section id="nosotros" class="about">
-
-            <div>
-
-                <p class="section-small">
-                    NUESTRA HISTORIA
-                </p>
-
-                <h2>
-                    MAKTOUB
-                </h2>
-
-                <p>
-                    MAKTOUB nace de una idea sencilla:<b>cada persona tiene un camino que recorrer y una historia que escribir.</b> <br>
-                    <br>Creamos esta marca para convertir esa filosofía en algo que puedas llevar contigo. Prendas pensadas para quienes tienen su propia identidad, siguen su camino y no necesitan encajar en lo establecido. <br>
-                    <br><b>No creemos en las casualidades. Creemos en el camino.
-                    Y si estás aquí, quizá también estaba escrito.</b><br>
-                    <br><b>MAKTOUB | مكتوب — Lo que está escrito.</b>
-                </p>
-
-               
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= CONTACTO ================= -->
-
-        <section id="contacto" class="contact">
-
-            <p class="section-small">
-                CONTACTO
-            </p>
-
-            <h2>
-                HABLEMOS
-            </h2>
-
-            <p>
-                ¿Tienes alguna pregunta sobre nuestros productos?
-            </p>
-
-            <a
-                href="mailto:maktoubone1@gmail.com"
-                class="email-button">
-
-                ENVIAR EMAIL
-
-            </a>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================= CARRITO ================= -->
-
-    <div id="cart" class="cart">
-
-        <div class="cart-header">
-
-            <h2>
-                TU CARRITO
-            </h2>
-
-            <button onclick="cerrarCarrito()">
-                ✕
-            </button>
-
-        </div>
-
-
-        <div id="cartItems">
-
-            <p class="empty-cart">
-                Tu carrito está vacío.
-            </p>
-
-        </div>
-
-
-        <div class="cart-bottom">
-
-            <div class="total">
-
-                <span>
-                    TOTAL
-                </span>
-
-                <strong id="cartTotal">
-                    0,00 €
-                </strong>
-
-            </div>
-
-            <button
-                class="whatsapp-button"
-                onclick="pedidoWhatsApp()">
-
-                💬 PEDIR POR WHATSAPP
-
-            </button>
-
-            <button
-                class="email-order-button"
-                onclick="pedidoEmail()">
-
-                ✉ PEDIR POR EMAIL
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= FONDO CARRITO ================= -->
-
-    <div
-        id="cartOverlay"
-        class="cart-overlay"
-        onclick="cerrarCarrito()">
-    </div>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <div class="footer-logo">
-            MAKTOUB | مكتوب
-        </div>
-
-        <p>
-            MÁS QUE ROPA, ES UNA ACTITUD.
-        </p>
-
-        <p class="copyright">
-            © 2026 MAKTOUB. TODOS LOS DERECHOS RESERVADOS.
-        </p>
-
-         <div class="sotial-network">
-            <div class="instagram">
-                <a href="https://www.instagram.com/maktoubone">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-
-            <div class="tiktok">
-                <a href="https://www.tiktok.com/@maktoubone" >
-                    <i class="fab fa-tiktok"></i>
-                </a>
-            </div>
-            <div class="gmail">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maktoubone1@gmail.com" target="_blank">
-                    <i class="material-icons">&#xe0be;</i>
-                </a>
-            </div>
-         </div>
-
-    </footer>
-
-
-    <!-- AUDIO -->
-
-    <audio id="music" loop>
-        <source src="media/musica_web.mp3" type="audio/mp3">
-    </audio>
-
-
-    <script src="web.js"></script>
-
+  <audio id="music" loop><source src="media/musica_web.mp3" type="audio/mpeg"></audio>
+  <script src="web.js"></script>
 </body>
 </html>
